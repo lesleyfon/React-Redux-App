@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import {  connect } from 'react-redux';
 import styled from 'styled-components'
-function HeightLightModal() {
+function HeightLightModal(props) {
+    console.log(props)
+    function  handleClose (e){
+        e.preventDefault()
+        const modal =document.getElementsByClassName('modal')[0]
+        modal.setAttribute("style", "display:none")
+
+
+    }
     return (
         <Modal className='modal'>
             <div className='modal-box'>
             <div className='modal-body'>
-                <span className='close-modal '>
+                <span className='close-modal' onClick= { handleClose } >
                     x
                 </span>
             </div>
@@ -14,7 +23,21 @@ function HeightLightModal() {
     )
 }
 
-export default HeightLightModal
+const mapStateToProps = state =>{
+    return {
+        data: state.forHighlight.data
+    }
+}
+export default connect(mapStateToProps, {})(HeightLightModal)
+
+
+
+
+
+
+
+
+
 
 const Modal = styled.div`
 
@@ -63,8 +86,6 @@ display: none;
 .modal-body {
   background: #ECEFF1;
   padding: 60px 40px;
-  /* height: 600px;
-  width: 600px; */
 }
 
 /* Close Button */

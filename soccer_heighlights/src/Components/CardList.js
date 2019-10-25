@@ -6,7 +6,6 @@ import loading from './loading.gif'
 import Card from './Card';
 
 function CardList(props) {
-    console.log(props.game_data)
     useEffect(() => {
        props.getGameData()
     }, [])
@@ -24,8 +23,8 @@ function CardList(props) {
 }
 const mapStateToProps =  state =>{
     return {
-        game_data: state.data,
-        isLoading: state.isLoading 
+        game_data: state.highlightsReducer.data,
+        isLoading: state.highlightsReducer.isLoading 
     }
 }
 const mapDispatchToProps = {

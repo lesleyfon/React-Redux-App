@@ -1,14 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import {highLightAction } from './../actions.js/highLightAction'
+
 
 function Card(props) {
     function hanleClick (e){
         e.preventDefault()
         const modal =document.getElementsByClassName('modal')[0]
-        modal.setAttribute("style", "display:block;")
+        modal.setAttribute("style", "display:block;");
+        highLightAction(props.game)
+
     }
     return (
-        <CardStyles onClick={hanleClick} > 
+        <CardStyles onClick={(e)=>{
+            hanleClick(e);
+            
+        }} > 
             <div className ='header' >
                 <img src={props.game.thumbnail} alt={props.game.competition.name}></img>
             </div>
