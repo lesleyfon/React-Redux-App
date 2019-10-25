@@ -5,8 +5,9 @@ export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
 
 export function getGameData (){
+
     return dispatch => {
-        dispatch({type : FETCH_DATA_START });
+        dispatch({ type : FETCH_DATA_START });
         axios.get('https://www.scorebat.com/video-api/v1/')
         .then(res=>{
             dispatch({
