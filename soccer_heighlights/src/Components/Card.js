@@ -2,9 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Card(props) {
-    
+    function hanleClick (e){
+        e.preventDefault()
+        const modal =document.getElementsByClassName('modal')[0]
+        modal.setAttribute("style", "display:block;")
+    }
     return (
-        <CardStyles > 
+        <CardStyles onClick={hanleClick} > 
             <div className ='header' >
                 <img src={props.game.thumbnail} alt={props.game.competition.name}></img>
             </div>
