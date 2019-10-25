@@ -1,8 +1,7 @@
-import React, {useEffect, useState } from 'react';
+import React from 'react';
 import {connect} from  'react-redux'
-import axios from 'axios'
-import styled from 'styled-components';
 
+import styled from 'styled-components';
 
 function CardList({game_data}) {
     return (
@@ -10,8 +9,6 @@ function CardList({game_data}) {
         </div>
     )
 }
-
-
 const mapStateToProps =  state=>{
     return {
         game_data: state.data
