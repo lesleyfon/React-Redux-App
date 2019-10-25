@@ -13,7 +13,6 @@ export function highlightsReducer (state = initialState, action){
                 isLoading: true
             }
         case FETCH_DATA_SUCCESS:
-            console.log(action)
             return{
                 ...state,
                 isLoading: false,

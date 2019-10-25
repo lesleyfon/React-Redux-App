@@ -2,19 +2,30 @@ import React, { useEffect }from 'react';
 import {connect} from  'react-redux'
 import { getGameData } from './../actions.js/gameAction'
 import styled from 'styled-components';
+import loading from './loading.gif'
+import Card from './Card';
 
 function CardList(props) {
+    console.log(props.game_data)
     useEffect(() => {
        props.getGameData()
     }, [])
     return (
-        <div>
-        </div>
+        <CardListStyles>
+            {
+                (props.isLoading || props.game_data === null)
+                ?
+                (<img src={ loading } alt='fetch data'/> )
+                :
+                props.game_data.map((game, i) => <Card game = {game} key={i}/>  )
+            }
+        </CardListStyles>
     )
 }
 const mapStateToProps =  state =>{
     return {
-        game_data: state.data
+        game_data: state.data,
+        isLoading: state.isLoading 
     }
 }
 const mapDispatchToProps = {
@@ -22,3 +33,11 @@ const mapDispatchToProps = {
     
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CardList)
+
+const CardListStyles = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+`;
