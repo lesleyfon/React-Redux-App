@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import styled from 'styled-components';
 import {highLightAction } from './../actions.js/highLightAction'
 
@@ -8,7 +9,7 @@ function Card(props) {
         e.preventDefault()
         const modal =document.getElementsByClassName('modal')[0]
         modal.setAttribute("style", "display:block;");
-        highLightAction(props.game)
+        props.highLightAction(props.game)
 
     }
     return (
@@ -28,7 +29,8 @@ function Card(props) {
     )
 }
 
-export default Card
+
+export default connect(null, {highLightAction})(Card)
 
 const CardStyles = styled.div`
     width: 300px;
