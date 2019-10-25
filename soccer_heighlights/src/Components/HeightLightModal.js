@@ -7,16 +7,17 @@ function HeightLightModal(props) {
         e.preventDefault()
         const modal =document.getElementsByClassName('modal')[0]
         modal.setAttribute("style", "display:none")
-
-
     }
     return (
         <Modal className='modal'>
             <div className='modal-box'>
             <div className='modal-body'>
-                <span className='close-modal' onClick= { handleClose } >
+                <h4 className='close-modal' onClick= { handleClose } >
                     x
-                </span>
+                </h4>
+                {(typeof props.data.title === 'string') && <div   dangerouslySetInnerHTML={{__html: 
+                `${props.data.embed.split('</iframe>')[0] }</iframe>`
+         }} />}
             </div>
             </div>
         </Modal>
@@ -86,18 +87,23 @@ display: none;
 .modal-body {
   background: #ECEFF1;
   padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
 }
-
+iframe{
+    margin: 0 auto;
+}
 /* Close Button */
 .close-modal {
-  text-align: right;
-  cursor: pointer;
-  float: right;
-  font-size: 2rem;
-  top: 0px; 
-  top: 0;
+    text-align: right;
+    cursor: pointer;
+    float: right;
+    font-size: 2rem;
+    top: 0px; 
+    top: 0;
     right: 0px;
     display: block;
+    margin: 0px
 }
 
 /* Animation */
@@ -166,4 +172,5 @@ button {
 
 .modal-trigger:hover {
   padding: 20px 60px;
-}`
+}
+`;

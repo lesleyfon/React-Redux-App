@@ -1,5 +1,6 @@
 
-import {FETCH_HIGHLIGHT} from './../actions.js/highLightAction'
+import {FETCH_HIGHLIGHT} from './../actions.js/highLightAction';
+
 const intState = {
     data: []
 }
